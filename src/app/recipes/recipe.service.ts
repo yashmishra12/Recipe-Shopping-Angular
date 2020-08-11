@@ -1,6 +1,11 @@
 import {Recipe} from './recipe.model';
+import {EventEmitter} from '@angular/core';
 
 export class RecipeService{
+
+  recipeSelected = new EventEmitter<Recipe>();
+
+
   private recipes: Recipe[] = [
     // tslint:disable-next-line:max-line-length
     new Recipe('Pizza', 'Five Pepper Pizza', 'https://images.pexels.com/photos/315755/pexels-photo-315755.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'),
