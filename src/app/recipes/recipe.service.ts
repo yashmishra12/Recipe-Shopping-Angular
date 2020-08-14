@@ -38,6 +38,9 @@ export class RecipeService{
     return this.recipes.slice(); //slice ensures that we get a copy and not the original recipesArray
   }
 
+  getRecipe(index: number) {
+    return this.recipes[index];
+  }
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.slService.addIngredients(ingredients);
   }
