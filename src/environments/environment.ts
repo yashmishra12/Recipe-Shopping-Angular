@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  fireBaseEndPoint: 'https://recipe-shopping-list-1ed4b.firebaseio.com/recipes.json'
 };
 
 /*
