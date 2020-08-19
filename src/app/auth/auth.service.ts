@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {environment} from '../../environments/environment';
 
 interface AuthResponseData {
   idToken:	string;
@@ -12,10 +13,11 @@ interface AuthResponseData {
 @Injectable({providedIn: 'root'})
 
 export class AuthService{
+  apiEndPoint: string = '';
 
-  constructor(private http: HttpClient) {}
-
-  apiEndPoint: string = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCSTVpseOa7NaAfqw1yJxMGUaNztUPIyig';
+  constructor(private http: HttpClient) {
+    this.apiEndPoint = environment.apiEndPoint;
+  }
 
   signup(email: string, password: string) {
     return this.http.post<AuthResponseData>(this.apiEndPoint,
