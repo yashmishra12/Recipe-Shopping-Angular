@@ -4,21 +4,24 @@ import {environment} from '../../environments/environment';
 import {catchError} from 'rxjs/operators';
 import {throwError} from 'rxjs';
 
-interface AuthResponseData {
+export interface AuthResponseData {
   idToken:	string;
   email:	string;
   refreshToken:	string;
   expiresIn:	string;
   localId:	string;
+  registered? : boolean;
 }
 
 @Injectable({providedIn: 'root'})
 
 export class AuthService{
   apiEndPoint: string = '';
+  signInEndPoint: string = '';
 
   constructor(private http: HttpClient) {
     this.apiEndPoint = environment.apiEndPoint;
+    this.signInEndPoint = environment.signInEndPoint;
   }
 
   signup(email: string, password: string) {
@@ -39,4 +42,12 @@ export class AuthService{
         return throwError(errorMessage);
     }));
   }
+
+  login(email: string, password: string) {
+    return this.http.post<AuthResponseData>(this.signInEndPoint, {
+      email: email,
+      password: password,
+      returnSecureToken: true
+    })
+  };
 }
