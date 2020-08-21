@@ -17,25 +17,6 @@ export class DataStorageService {
     this.fireBaseEndPoint = environment.fireBaseEndPoint;
   }
 
-
-  // storeRecipes() {
-  //   const recipes = this.recipeService.getRecipes();
-  //   this.http.put(this.fireBaseEndPoint,
-  //     recipes).subscribe(
-  //     response => {
-  //       console.log(response);
-  //     }
-  //   );
-  // }
-  // storeRecipes() {
-  //   const recipes = this.recipeService.getRecipes();
-  //   return this.http.put( this.fireBaseEndPoint, recipes)
-  //            .subscribe(response => {
-  //              console.log(response);
-  //           });
-  //       }
-
-  //
   storeRecipes() {
     const userData:{email: string, id: string,_token: string, _tokenExpirationDate: string} = JSON.parse(localStorage.getItem('userData'));
     const recipes = this.recipeService.getRecipes();
