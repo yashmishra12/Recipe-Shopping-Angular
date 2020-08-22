@@ -10,7 +10,8 @@ import { RecipesResolverService } from './recipes-resolver.service';
 
 const routes: Routes = [
   {
-    path: 'recipes',
+    //empty path indicates that app-routing.module is using LazyLoading
+    path: '',
     component: RecipesComponent,
     canActivate: [AuthGuard],
     children: [

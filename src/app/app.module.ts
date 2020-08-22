@@ -8,10 +8,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {RecipeService} from './recipes/recipe.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthInterceptorService} from './auth/auth-interceptor.service';
-import {RecipesModule} from './recipes/recipes.module';
-import {ShoppingListModule} from './shopping-list/shopping-list.module';
 import {SharedModule} from './shared/shared.module';
-import {AuthModule} from './auth/auth.module';
 
 
 @NgModule({
@@ -24,10 +21,7 @@ import {AuthModule} from './auth/auth.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RecipesModule,
-    ShoppingListModule,
     SharedModule,
-    AuthModule
   ],
   providers: [ShoppingListService,RecipeService,
     {provide: HTTP_INTERCEPTORS,

@@ -9,20 +9,18 @@ import {AuthService} from '../auth/auth.service';
 @Injectable({providedIn: 'root'})
 export class DataStorageService {
 
-  fireBaseEndPoint: string = '';
 
   constructor(private http: HttpClient,
               private recipeService: RecipeService,
               private authService: AuthService) {
-    this.fireBaseEndPoint = environment.fireBaseEndPoint;
-  }
+      }
 
   storeRecipes() {
     const userData:{email: string, id: string,_token: string, _tokenExpirationDate: string} = JSON.parse(localStorage.getItem('userData'));
     const recipes = this.recipeService.getRecipes();
     this.http
       .put(
-        this.fireBaseEndPoint,
+        environment.fireBaseEndPoint,
         recipes,
         { params: new HttpParams().set('auth', userData._token )}
       )
@@ -38,7 +36,7 @@ fetchRecipes() {
     take(1),
     exhaustMap(user => {
       return this.http.get<Recipe[]>(
-        this.fireBaseEndPoint,
+        environment.fireBaseEndPoint,
         {
           params: new HttpParams().set('auth', user.token)
         }

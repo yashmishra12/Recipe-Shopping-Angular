@@ -22,16 +22,11 @@ export class AuthService{
   private tokenExpirationTimer;
 
 
-  apiEndPoint: string = '';
-  signInEndPoint: string = '';
-
   constructor(private http: HttpClient, private router: Router) {
-    this.apiEndPoint = environment.apiEndPoint;
-    this.signInEndPoint = environment.signInEndPoint;
   }
 
   signup(email: string, password: string) {
-    return this.http.post<AuthResponseData>(this.apiEndPoint,
+    return this.http.post<AuthResponseData>(environment.apiEndPoint,
       {
         email: email,
         password: password,
@@ -80,7 +75,7 @@ export class AuthService{
   }
 
   login(email: string, password: string) {
-    return this.http.post<AuthResponseData>(this.signInEndPoint, {
+    return this.http.post<AuthResponseData>(environment.signInEndPoint, {
       email: email,
       password: password,
       returnSecureToken: true
