@@ -3,10 +3,11 @@
     <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
   </div>
 </div>
+
 <hr>
+
 <div class="row">
   <div class="col-xs-12">
-    <!-- This recipes is inside its own TypeScript File-->
     <app-recipe-item
       *ngFor="let recipeEL of recipes; let i = index"
       [recipe]="recipeEL"
