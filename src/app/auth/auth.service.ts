@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {catchError, tap} from 'rxjs/operators';
-import {BehaviorSubject, Subject, throwError} from 'rxjs';
+import {BehaviorSubject, throwError} from 'rxjs';
 import {User} from './user.model';
 import {Router} from '@angular/router';
 
@@ -18,9 +18,9 @@ export interface AuthResponseData {
 @Injectable({providedIn: 'root'})
 
 export class AuthService{
+
   user = new BehaviorSubject<User>(null);
   private tokenExpirationTimer;
-
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -40,7 +40,7 @@ export class AuthService{
     );
   }
 
-  logout() {
+  logout()  {
     this.user.next(null);
     this.router.navigate(['/auth']);
     localStorage.removeItem('userData');
